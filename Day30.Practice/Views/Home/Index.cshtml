@@ -1,0 +1,32 @@
+﻿@model Day30.Practice.ViewModels.ProductsByCategoryVM
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <h2>Search Product By Category</h2>
+        </div>
+        <hr />
+
+        @using (Html.BeginForm("GetProducts", "Home", FormMethod.Get))
+        {
+            <div class="row mb-3">
+                <label class="col-sm-2 col-form-label">Select a Category</label>
+                <div class="col-sm-3">
+                    @Html.DropDownList("CategoryName", Model.Categories, "--Select--", new { @class = "form-select" })
+                </div>
+                <div class="col-sm-4">
+                    <button type="submit" class="btn btn-success">Search</button>
+                </div>
+            </div>
+        }
+
+        <div>
+            @Html.Partial("_ProductDetailsPartial", Model)
+
+        </div>
+    </div>
+</div>
